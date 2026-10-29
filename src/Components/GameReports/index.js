@@ -21,9 +21,7 @@ const GameReports = () => {
       <div className="home-container">
         <div className="inside">
           <div className="top">
-            <p className="j">
-              {score}/{totalQuestions}
-            </p>
+            <p className="j">{`${score}/${totalQuestions}`}</p>
 
             <div>
               <p className="ed">
@@ -50,7 +48,7 @@ const GameReports = () => {
                   alt="unattempted icon"
                   className="answer-icon"
                 />
-                {unattempted} Unattempted answers
+                {unattempted} Unattempted
               </p>
             </div>
           </div>
@@ -70,7 +68,8 @@ const GameReports = () => {
                         <ul>
                           {eachItem.options.map(eachOption => (
                             <li key={eachOption.id} className="ed">
-                              <p
+                              <button
+                                type="button"
                                 className={`o ${
                                   eachOption.isCorrect === true
                                     ? 'correct-option'
@@ -78,12 +77,13 @@ const GameReports = () => {
                                 }`}
                               >
                                 {eachOption.text}
-                              </p>
+                              </button>
 
-                              {eachOption.isCorrect === 'true' && (
+                              {eachOption.isCorrect === true && (
                                 <img
                                   src="https://assets.ccbp.in/frontend/react-js/quiz-game-check-circle-img.png"
                                   className="answer-icon"
+                                  alt="correct checked circle"
                                 />
                               )}
                             </li>
@@ -105,13 +105,13 @@ const GameReports = () => {
                                 type="radio"
                                 id={`option-${eachOption.id}`}
                                 name={`question-${eachItem.id}`}
-                                checked={eachOption.isCorrect === 'true'}
+                                checked={eachOption.isCorrect === true}
                                 readOnly
                               />
                               <label htmlFor={`option-${eachOption.id}`}>
                                 {eachOption.text}
                               </label>
-                              {eachOption.isCorrect === 'true' && (
+                              {eachOption.isCorrect === true && (
                                 <div>
                                   <img
                                     src="https://assets.ccbp.in/frontend/react-js/quiz-game-check-circle-img.png"
@@ -133,15 +133,14 @@ const GameReports = () => {
                         <p>{eachItem.text}</p>
 
                         {eachItem.options.map(eachOption => (
-                          <div className="ddf">
+                          <div className="ddf" key={eachOption.id}>
                             <img
-                              key={eachOption.id}
                               src={eachOption.imageUrl}
                               alt={eachOption.text}
                               className="image"
                             />
 
-                            {eachOption.isCorrect === 'true' && (
+                            {eachOption.isCorrect === true && (
                               <div>
                                 <img
                                   src="https://assets.ccbp.in/frontend/react-js/quiz-game-check-circle-img.png"

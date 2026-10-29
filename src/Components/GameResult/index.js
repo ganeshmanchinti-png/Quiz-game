@@ -1,7 +1,7 @@
 import './index.css'
 import Header from '../Header'
 import {useContext} from 'react'
-import {Link} from 'react-router-dom'
+import {useHistory} from 'react-router-dom'
 
 import ReactContext from '../ReactContext'
 
@@ -12,6 +12,12 @@ const GameResult = () => {
     totalQuestions > 0 ? Math.round((score / totalQuestions) * 100) : 0
 
   const isPassed = percentage >= 60
+
+  const history = useHistory()
+
+  const onClickReport = () => {
+    history.push('/game-report')
+  }
   return (
     <div>
       <Header />
@@ -31,11 +37,10 @@ const GameResult = () => {
                 You attempted {score} out of {totalQuestions} questions as
                 correct.
               </p>
-              <Link to="/game-report" className="nav">
-                <button type="button" className="next">
-                  Report
-                </button>
-              </Link>
+
+              <button type="button" className="next" onClick={onClickReport}>
+                Report
+              </button>
             </div>
           ) : (
             <div>
@@ -52,10 +57,8 @@ const GameResult = () => {
                 correct.
               </p>
 
-              <button type="button" className="next">
-                <Link to="/game-report" className="nav">
-                  Report
-                </Link>
+              <button type="button" className="next" onClick={onClickReport}>
+                Report
               </button>
             </div>
           )}

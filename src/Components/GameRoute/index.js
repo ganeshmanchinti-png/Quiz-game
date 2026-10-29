@@ -1,6 +1,6 @@
 import {useEffect, useState, useContext} from 'react'
 import Cookies from 'js-cookie'
-import {Link} from 'react-router-dom'
+import {Link, useHistory} from 'react-router-dom'
 
 import Loader from 'react-loader-spinner'
 
@@ -25,7 +25,7 @@ const GameRoute = () => {
 
   const [selectedOptionId, setSelectedOptionId] = useState(null)
 
-  const [status, setApiStatus] = useState(apiStatusConstants.initial)
+  const [status, setApiStatus] = useState(apiStatusConstants.inProgress)
 
   const {score, setScore} = useContext(ReactContext)
 
@@ -34,6 +34,8 @@ const GameRoute = () => {
   const {totalQuestions, setTotalQuestion} = useContext(ReactContext)
 
   const {selectedAnswers, setSelectedAnswers} = useContext(ReactContext)
+
+  const history = useHistory()
 
   useEffect(() => {
     if (status !== apiStatusConstants.success) {
@@ -49,8 +51,9 @@ const GameRoute = () => {
         setCurrentQuestionIndex(prevState => prevState + 1)
         setTimer(15)
         setSelectedOptionId(null)
+      } else {
+        history.replace('/game-results')
       }
-
       return
     }
 
@@ -63,6 +66,9 @@ const GameRoute = () => {
 
   const getQuestions = async () => {
     setApiStatus(apiStatusConstants.inProgress)
+    setScore(0)
+    setAttemptedCount(0)
+    setSelectedAnswers([])
 
     try {
       const token = Cookies.get('jwt_token')
@@ -84,12 +90,13 @@ const GameRoute = () => {
           options: eachItem.options.map(option => ({
             id: option.id,
             text: option.text,
-            isCorrect: option.is_correct,
+            isCorrect: option.is_correct === 'true',
             imageUrl: option.image_url,
           })),
         }))
 
         setQuestions(questionData)
+        setTotalQuestion(questionData.length)
         setApiStatus(apiStatusConstants.success)
       } else {
         setApiStatus(apiStatusConstants.failure)
@@ -118,7 +125,6 @@ const GameRoute = () => {
 
     setSelectedOptionId(id)
     setAttemptedCount(prevState => prevState + 1)
-    setTotalQuestion(question.length)
 
     const currentQuestion = question[currentQuestionIndex]
 
