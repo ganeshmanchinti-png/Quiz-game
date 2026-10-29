@@ -57,11 +57,11 @@ const GameRoute = () => {
       return
     }
 
-    const timerId = setTimeout(() => {
+    const timerId = setInterval(() => {
       setTimer(prevState => prevState - 1)
     }, 1000)
 
-    return () => clearTimeout(timerId)
+    return () => clearInterval(timerId)
   }, [timer, selectedOptionId, status, currentQuestionIndex, question.length])
 
   const getQuestions = async () => {
@@ -94,6 +94,8 @@ const GameRoute = () => {
             imageUrl: option.image_url,
           })),
         }))
+
+        console.log(questionData)
 
         setQuestions(questionData)
         setTotalQuestion(questionData.length)
@@ -179,7 +181,7 @@ const GameRoute = () => {
         <div className="topv">
           <div className="q">
             <p>Questions</p>
-            <p>
+            <p className="js">
               {currentQuestionIndex + 1}/{question.length}
             </p>
           </div>

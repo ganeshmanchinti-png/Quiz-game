@@ -24,3 +24,14 @@
   background-image: url('https://assets.ccbp.in/frontend/react-js/quiz-game-congrats-card-bg.png');
   background-size: cover;
 }
+
+.ii {
+  color: #0ea5e9;
+
+  opacity: 1;
+}
+
+
+.next{
+  cursor: pointer;
+}

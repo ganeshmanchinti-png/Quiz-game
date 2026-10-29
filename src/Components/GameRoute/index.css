@@ -9,6 +9,10 @@
 
   background: #f8fafc;
 }
+.js {
+  color: #ffffff;
+  font-size: 20px;
+}
 .final {
   list-style: none;
   display: flex;

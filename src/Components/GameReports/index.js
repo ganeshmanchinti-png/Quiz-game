@@ -100,10 +100,9 @@ const GameReports = () => {
                       return (
                         <div key={eachItem.id}>
                           <p>{eachItem.text}</p>
-
-                          {eachItem.options.map(eachOption => (
-                            <div className="ddf" key={eachOption.id}>
-                              <p key={eachOption.id}>
+                          <ul>
+                            {eachItem.options.map(eachOption => (
+                              <li key={eachOption.id} className="ddf">
                                 <input
                                   type="radio"
                                   id={`option-${eachOption.id}`}
@@ -115,45 +114,40 @@ const GameReports = () => {
                                   {eachOption.text}
                                 </label>
                                 {eachOption.isCorrect === true && (
-                                  <div>
-                                    <img
-                                      src="https://assets.ccbp.in/frontend/react-js/quiz-game-check-circle-img.png"
-                                      alt="correct answer"
-                                      className="answer-icon"
-                                    />
-                                  </div>
+                                  <img
+                                    src="https://assets.ccbp.in/frontend/react-js/quiz-game-check-circle-img.png"
+                                    alt="correct checked circle"
+                                    className="answer-icon"
+                                  />
                                 )}
-                              </p>
-                            </div>
-                          ))}
+                              </li>
+                            ))}
+                          </ul>
                         </div>
                       )
                     }
-
                     if (eachItem.optionsType === 'IMAGE') {
                       return (
                         <div key={eachItem.id}>
                           <p>{eachItem.text}</p>
-
-                          {eachItem.options.map(eachOption => (
-                            <div className="ddf" key={eachOption.id}>
-                              <img
-                                src={eachOption.imageUrl}
-                                alt={eachOption.text}
-                                className="image"
-                              />
-
-                              {eachOption.isCorrect === true && (
-                                <div>
+                          <ul>
+                            {eachItem.options.map(eachOption => (
+                              <li key={eachOption.id} className="ddf">
+                                <img
+                                  src={eachOption.imageUrl}
+                                  alt={eachOption.text}
+                                  className="image"
+                                />
+                                {eachOption.isCorrect === true && (
                                   <img
                                     src="https://assets.ccbp.in/frontend/react-js/quiz-game-check-circle-img.png"
-                                    alt="correct answer"
+                                    alt="correct checked circle"
                                     className="answer-icon"
                                   />
-                                </div>
-                              )}
-                            </div>
-                          ))}
+                                )}
+                              </li>
+                            ))}
+                          </ul>
                         </div>
                       )
                     }

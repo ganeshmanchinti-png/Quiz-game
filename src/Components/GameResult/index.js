@@ -31,7 +31,7 @@ const GameResult = () => {
                 className="won"
               />
               <h1>Congrats</h1>
-              <h1>{percentage}% Correctly Answered</h1>
+              <h1 className="ii">{percentage}% Correctly Answered</h1>
               <p>Quiz completed successfully</p>
               <p>
                 You attempted {score} out of {totalQuestions} questions as
@@ -50,7 +50,7 @@ const GameResult = () => {
                 className="won"
               />
               <h1>You lose</h1>
-              <h1>{percentage}% Correctly Answered</h1>
+              <h1 className="ii">{percentage}% Correctly Answered</h1>
               <p>Quiz completed successfully</p>
               <p>
                 You attempted {score} out of {totalQuestions} questions as
