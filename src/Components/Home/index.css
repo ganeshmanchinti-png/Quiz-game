@@ -1,0 +1,109 @@
+.home-container {
+  background: linear-gradient(
+    91.08deg,
+    #dbbcc4 9.68%,
+    #f3dfd8 32.98%,
+    #d8bfd0 75.7%,
+    #b7b1d5 99.11%
+  );
+  width: 1440px;
+  height: 1024px;
+
+  opacity: 1;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.inside {
+  width: 1146px;
+  height: 798px;
+  top: 136px;
+  left: 147px;
+
+  opacity: 1;
+  border-radius: 8px;
+
+  background: #f8fafc;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.startGame {
+  width: 482px;
+  height: 340px;
+  top: 232px;
+  left: 479px;
+
+  opacity: 1;
+}
+.para {
+  width: 436;
+  height: 24;
+  top: 668px;
+  left: 503px;
+
+  opacity: 1;
+  color: #475569;
+}
+.StartQ {
+  width: 140px;
+  height: 40px;
+  padding-top: 8px;
+  padding-right: 16px;
+  padding-bottom: 8px;
+  padding-left: 16px;
+  gap: 8px;
+
+  opacity: 1;
+  border-radius: 8px;
+  background: #0ea5e9;
+  color: #ffffff;
+  cursor: pointer;
+  outline: none;
+}
+.heading {
+  font-family: Inter;
+  font-weight: 600;
+  font-size: 24px;
+  color: #0ea5e9;
+
+  line-height: 32px;
+  letter-spacing: 0%;
+}
+.message {
+  width: 24px;
+  height: 24px;
+
+  opacity: 1;
+}
+.w {
+  width: 517px;
+  height: 52px;
+  top: 850px;
+  left: 462px;
+
+  opacity: 1;
+
+  background: #fef3c7;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.fd {
+  font-family: Inter;
+  font-weight: 500;
+  font-size: 16px;
+
+  line-height: 28px;
+  letter-spacing: 0%;
+  vertical-align: middle;
+  color: #d97706;
+}
+.nav {
+  text-decoration: none;
+}
