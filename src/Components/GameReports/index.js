@@ -18,10 +18,12 @@ const GameReports = () => {
   return (
     <div>
       <Header />
-      <div className="home-container">
-        <div className="inside">
+      <div className="home-containers">
+        <div className="insideaa">
           <div className="top">
-            <p className="j">{`${score}/${totalQuestions}`}</p>
+            <p className="j">
+              <span>{score}</span>/{totalQuestions}
+            </p>
 
             <div>
               <p className="ed">
@@ -60,57 +62,87 @@ const GameReports = () => {
               <h1 className="heading">Attempted all the questions</h1>
             ) : (
               <div className="jk">
-                {unattemptedQuestions.map(eachItem => {
-                  if (eachItem.optionsType === 'DEFAULT') {
-                    return (
-                      <div key={eachItem.id}>
-                        <p>{eachItem.text}</p>
-                        <ul>
+                <div className="wavee">
+                  {unattemptedQuestions.map(eachItem => {
+                    if (eachItem.optionsType === 'DEFAULT') {
+                      return (
+                        <div key={eachItem.id}>
+                          <p>{eachItem.text}</p>
+                          <ul>
+                            {eachItem.options.map(eachOption => (
+                              <li key={eachOption.id} className="ed">
+                                <button
+                                  type="button"
+                                  className={`o ${
+                                    eachOption.isCorrect === true
+                                      ? 'correct-option'
+                                      : ''
+                                  }`}
+                                >
+                                  {eachOption.text}
+                                </button>
+
+                                {eachOption.isCorrect === true && (
+                                  <img
+                                    src="https://assets.ccbp.in/frontend/react-js/quiz-game-check-circle-img.png"
+                                    className="answer-icon"
+                                    alt="correct checked circle"
+                                  />
+                                )}
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      )
+                    }
+
+                    if (eachItem.optionsType === 'SINGLE_SELECT') {
+                      return (
+                        <div key={eachItem.id}>
+                          <p>{eachItem.text}</p>
+
                           {eachItem.options.map(eachOption => (
-                            <li key={eachOption.id} className="ed">
-                              <button
-                                type="button"
-                                className={`o ${
-                                  eachOption.isCorrect === true
-                                    ? 'correct-option'
-                                    : ''
-                                }`}
-                              >
-                                {eachOption.text}
-                              </button>
-
-                              {eachOption.isCorrect === true && (
-                                <img
-                                  src="https://assets.ccbp.in/frontend/react-js/quiz-game-check-circle-img.png"
-                                  className="answer-icon"
-                                  alt="correct checked circle"
+                            <div className="ddf" key={eachOption.id}>
+                              <p key={eachOption.id}>
+                                <input
+                                  type="radio"
+                                  id={`option-${eachOption.id}`}
+                                  name={`question-${eachItem.id}`}
+                                  checked={eachOption.isCorrect === true}
+                                  readOnly
                                 />
-                              )}
-                            </li>
+                                <label htmlFor={`option-${eachOption.id}`}>
+                                  {eachOption.text}
+                                </label>
+                                {eachOption.isCorrect === true && (
+                                  <div>
+                                    <img
+                                      src="https://assets.ccbp.in/frontend/react-js/quiz-game-check-circle-img.png"
+                                      alt="correct answer"
+                                      className="answer-icon"
+                                    />
+                                  </div>
+                                )}
+                              </p>
+                            </div>
                           ))}
-                        </ul>
-                      </div>
-                    )
-                  }
+                        </div>
+                      )
+                    }
 
-                  if (eachItem.optionsType === 'SINGLE_SELECT') {
-                    return (
-                      <div key={eachItem.id}>
-                        <p>{eachItem.text}</p>
+                    if (eachItem.optionsType === 'IMAGE') {
+                      return (
+                        <div key={eachItem.id}>
+                          <p>{eachItem.text}</p>
 
-                        {eachItem.options.map(eachOption => (
-                          <div className="ddf" key={eachOption.id}>
-                            <p key={eachOption.id}>
-                              <input
-                                type="radio"
-                                id={`option-${eachOption.id}`}
-                                name={`question-${eachItem.id}`}
-                                checked={eachOption.isCorrect === true}
-                                readOnly
+                          {eachItem.options.map(eachOption => (
+                            <div className="ddf" key={eachOption.id}>
+                              <img
+                                src={eachOption.imageUrl}
+                                alt={eachOption.text}
+                                className="image"
                               />
-                              <label htmlFor={`option-${eachOption.id}`}>
-                                {eachOption.text}
-                              </label>
+
                               {eachOption.isCorrect === true && (
                                 <div>
                                   <img
@@ -120,43 +152,15 @@ const GameReports = () => {
                                   />
                                 </div>
                               )}
-                            </p>
-                          </div>
-                        ))}
-                      </div>
-                    )
-                  }
+                            </div>
+                          ))}
+                        </div>
+                      )
+                    }
 
-                  if (eachItem.optionsType === 'IMAGE') {
-                    return (
-                      <div key={eachItem.id}>
-                        <p>{eachItem.text}</p>
-
-                        {eachItem.options.map(eachOption => (
-                          <div className="ddf" key={eachOption.id}>
-                            <img
-                              src={eachOption.imageUrl}
-                              alt={eachOption.text}
-                              className="image"
-                            />
-
-                            {eachOption.isCorrect === true && (
-                              <div>
-                                <img
-                                  src="https://assets.ccbp.in/frontend/react-js/quiz-game-check-circle-img.png"
-                                  alt="correct answer"
-                                  className="answer-icon"
-                                />
-                              </div>
-                            )}
-                          </div>
-                        ))}
-                      </div>
-                    )
-                  }
-
-                  return null
-                })}
+                    return null
+                  })}
+                </div>
               </div>
             )}
           </div>
